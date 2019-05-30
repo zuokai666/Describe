@@ -2,7 +2,15 @@
 位置：Spring.Core [SourceCode master]
 描述：
 1.基于volatile关键字的双重检测锁实现线程安全，实现见org.zk.core.env.AbstractPropertyResolver中的转换服务
-2.customizePropertySources自定义多属性源
+2.customizePropertySources自定义多属性源，符合开闭原则，抽象基类为子类开后门
+3.环境模块层级：
+	第一层：StandardEnvironment，AbstractEnvironment
+	第一层描述：相比于第二层，第一层添加Profile功能，继承正是为了对扩展开放，所以我们要想得到属性，解析占位符，其实PropertyResolver才是我们想要的。
+	中间：    一/二层共用同一个多属性源
+	第二层：PropertySourcesPropertyResolver，AbstractPropertyResolver
+	第二层描述：第二层添加了转换服务，设置占位符3属性，验证必要属性功能，分层正是为了满足开闭原则
+	第三层：util.PropertyPlaceholderHelper，内部与Mybatis一样，将查找与处理解耦，做到了不同的处理，这是一个工具类，所以系统有很多地方引用它
+
 
 #
 #
