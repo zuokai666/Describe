@@ -1,8 +1,20 @@
 时间：2019-05-29 15:03:09
+位置：Spring.Core [SourceCode master]
+描述：
+1.基于volatile关键字的双重检测锁实现线程安全，实现见org.zk.core.env.AbstractPropertyResolver中的转换服务
+2.customizePropertySources自定义多属性源
+
+#
+#
+-------------------------------------------内容分割线----------------------------------------------
+#
+#
+
+时间：2019-05-29 15:03:09
 位置：Microsoft .NET企业级应用架构设计.pdf
 描述：
 1.正确的判断来自于经验，而经验来自于错误的判断
-2.基于volatile关键字的双重检测锁实现线程安全，实现见org.zk.core.env.AbstractPropertyResolver中的转换服务
+
 
 
 
@@ -44,7 +56,7 @@ conversionService.convert("2", Integer.class)
 Integer是Number的子类，Number还有很多子类，所以此处的转换器是1->N，是ConverterFactory类型。
 
 Converter 一对一
-ConverterFactory 一对N
+ConverterFactory 一对N String->Number
 GenericConverter N对N
 
 #
