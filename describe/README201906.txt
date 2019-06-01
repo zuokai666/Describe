@@ -1,0 +1,21 @@
+时间：2019-05-31
+位置：Spring.Core [SourceCode master]
+描述：今日学习框架中表示顺序概念的模块order
+1.spring默认情况下遵循由低到高的顺序，即最低值有最高优先级
+	有了优先级顺序，就要有维护顺序的程序，要不然也没啥用，涉及到加载，运行，都会涉及到顺序，
+	例如：Servlet {load-on-startup}
+2.顺序概念
+	2.1 interface Ordered
+	2.2 @interface Order 同	javax.annotation.Priority
+	2.3 class OrderUtils 用于得到顺序值
+	2.4 OrderComparator 这个比较器只会比较实现PriorityOrdered/Ordered接口的对象
+	2.5 AnnotationAwareOrderComparator 使用OrderUtils，完成了接口，注解的比较
+
+
+
+
+#
+#
+-------------------------------------------内容分割线----------------------------------------------
+#
+#

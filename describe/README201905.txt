@@ -4,7 +4,7 @@
 1.SpringFactoriesLoader利用传入的ClassLoader找到指定资源，然后存入缓存，这里要保证线程安全，cache使用的是ConcurrentReferenceHashMap，
   key与value使用的是soft，weak引用。这种机制满足的开闭原则，我们要想DIY框架，只需要在自己的包中新建META-INF/spring.factories文件，然后key是接口，
   value是DIY实现，这样就可以做到不不改变原代码的前提下，扩展功能。类似于观察者设计模式，满足开闭原则。
-  
+2.SpringFactoriesLoader加载资源，注意顺序
 
 #
 #
