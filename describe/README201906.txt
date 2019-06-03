@@ -1,6 +1,13 @@
 时间：2019-6-3 13:38:09
 位置：Spring.Cloud [SpringCloud master]
 描述：
+1.Spring Cloud Netflix
+提供的模式包括
+
+服务发现（Eureka）
+断路器（Hystrix）
+智能路由（Zuul）
+客户端负载平衡（Ribbon）
 
 
 
