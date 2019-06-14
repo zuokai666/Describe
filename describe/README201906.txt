@@ -1,3 +1,32 @@
+时间：2019-6-14 09:01:54
+位置：spring source code
+描述：
+
+BeanPostProcessor Bean后置处理器，用于满足开闭原则，提高扩展性，在不修改源代码的前提下就可以对注册的Bean进行DIY
+BeanFactory中以数组存放，以CopyOnWriteArrayList保证线程安全
+设计模式：责任链设计模式
+时间复杂度：n个Bean，m个后置处理器，线性增长nm，启动时间会变慢
+
+
+BeanFactoryPostProcessor BeanFactory后置处理器
+ApplicationContext中以数组存放，没有考虑线程安全问题：ArrayList
+
+
+Aware 上层感知接口，加大了两层的依赖，使得下层依赖上层
+JDBC 启动类加载器->应用类加载器
+
+
+面向接口编程，当流程理完后，接口方法也已经定义好了
+
+
+
+
+#
+#
+-------------------------------------------内容分割线----------------------------------------------
+#
+#
+
 时间：2019-6-12 21:23:47
 位置：lintcode.com
 描述：
