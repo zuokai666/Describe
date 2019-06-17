@@ -11,19 +11,14 @@ public class ConnectionTest {
 	public static void main(String[] args) throws SQLException{
 		int testConnection = 1000000;
 		ThreadPoolExecutor executor=
-					new ThreadPoolExecutor(30, 50, 30, TimeUnit.SECONDS, 
-							new LinkedBlockingQueue<>());
+					new ThreadPoolExecutor(30, 50, 30, TimeUnit.SECONDS, new LinkedBlockingQueue<>());
 		for(int i=0;i<testConnection;i++){
 			try {
-				executor.execute(new SelectTask());
+				executor.execute(new InsertTask());
 			} catch (RejectedExecutionException e) {
-				System.err.println("线程池拒绝提供服务");
 				e.printStackTrace();
 				break;
 			}
-//			System.out.println("线程池中线程数目："+executor.getPoolSize()+
-//					"，队列中等待执行的任务数目："+executor.getQueue().size()+
-//					"，已执行完的任务数目："+executor.getCompletedTaskCount());
 		}
 		executor.shutdown();
 	}
