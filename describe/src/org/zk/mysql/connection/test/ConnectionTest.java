@@ -14,7 +14,7 @@ public class ConnectionTest {
 					new ThreadPoolExecutor(30, 50, 30, TimeUnit.SECONDS, new LinkedBlockingQueue<>());
 		for(int i=0;i<testConnection;i++){
 			try {
-				executor.execute(new InsertTask());
+				executor.execute(new InsertManyTask());
 			} catch (RejectedExecutionException e) {
 				e.printStackTrace();
 				break;
