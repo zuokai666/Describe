@@ -1,5 +1,10 @@
 package com.heap;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.array.DynamicArray;
+
 /**
  * 堆
  * 
@@ -10,15 +15,29 @@ package com.heap;
  */
 public class Heap<T> {
 	
-	private Object[] elements;
+	public static final Logger log = LoggerFactory.getLogger(Heap.class);
+	
+	private DynamicArray<T> elements;
 	
 	private int size = 0;
 	
 	public Heap(int initialCapacity) {
-		elements = new Object[initialCapacity];
+		elements = new DynamicArray<>(initialCapacity);
 	}
 	
-	public void inert(T t){
-		
+	public void add(T t){
+		if(size == 0){
+			elements.set(size, t);
+			size++;
+		}else {
+			siftUp(size, t);
+			size++;
+		}
+	}
+	
+	private void siftUp(int k, T t) {
+		log.debug("上滤前:{}", elements);
+		elements.set(k, t);
+		log.debug("上滤后:{}", elements);
 	}
 }
