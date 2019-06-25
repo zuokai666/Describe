@@ -1,0 +1,23 @@
+java version "1.8.0_111"
+
+静态空间管理转动态空间管理，解决的是数组上溢问题，也不能浪费空间，装填因子loadfactor不能太低
+
+ArrayList:1.5倍策略
+int newCapacity = oldCapacity + (oldCapacity >> 1);
+
+Vector:如果设置了固定增长，就是增加固定，否则2倍扩容
+int newCapacity = oldCapacity + ((capacityIncrement > 0) ? capacityIncrement : oldCapacity);
+
+                                         
+HashMap:2倍扩容
+newCap = oldCap << 1
+TODO:
+threshold=loadfactor*capacity
+
+PriorityQueue:如果原容量小于64，则2倍扩容+2，否则2.5倍扩容
+int newCapacity = oldCapacity + ((oldCapacity < 64) ?(oldCapacity + 2) : (oldCapacity >> 1));                                         
+                                         
+                                
+Redis:SDS
+当字符串长度小于 1M 时，扩容都是加倍现有的空间，如果超过 1M，扩容时一次只会多扩 1M 的空间。(字符串最大长度为 512M)
+
