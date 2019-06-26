@@ -6,6 +6,7 @@ import com.heap.Heap;
 import com.sort.BubbleSort;
 import com.sort.InsertSort;
 import com.sort.MergeSort;
+import com.sort.QuickSort;
 import com.sort.SelectSort;
 import com.sort.Sort;
 
@@ -14,8 +15,9 @@ public class SortTest {
 	
 	static int[] arr2 = {12,23,34,56,90,56,78,1,7,3,5};
 	static int[] arr1 = {12,23,34,56,90,56,78,1,7,3,5};
-	static int[] arr3 = {14, 10, 9, 7, 12, 2, 1, 4, 3, 11, 5};
+	static int[] arr3 = {7, 9, 6, 12, 2, 1, 4, 3, 11, 5};
 	static int[] arr4 = {4,3,2,1};
+	static int[] arr5 = {5,3,8,2,6,9,4,11,1,7};
 	
 	public static void main(String[] args) {
 //		new BubbleSort().sortV1(arr2);
@@ -31,8 +33,10 @@ public class SortTest {
 //			System.err.println(heap.delMax());
 //		}
 		
-		new MergeSort().sort(arr2);
-		System.err.println(Arrays.toString(arr2));
-		Sort.check(arr2);
+//		new MergeSort().sort(arr2);
+//		System.err.println(Arrays.toString(arr2));
+//		Sort.check(arr2);
+		
+		new QuickSort().sort(arr5,0);
 	}
 }

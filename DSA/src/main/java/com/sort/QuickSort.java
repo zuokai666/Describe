@@ -1,5 +1,10 @@
 package com.sort;
 
+import java.util.Arrays;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * n个数值选出最大m个数（3<m<n）的最小算法复杂度是O(n)
  * 
@@ -14,5 +19,29 @@ package com.sort;
  *
  */
 public class QuickSort {
-
+	
+	private static Logger log = LoggerFactory.getLogger(QuickSort.class);
+	
+	public void sort(int[] arr,int i){
+		int j=arr.length - 1;
+		int pivot = arr[i];
+		arr[i]=0;
+		log.debug(Arrays.toString(arr));
+		while(i < j){
+			while((i < j) && (pivot <= arr[j])){
+				j--;
+			}
+			arr[i]=arr[j];
+			arr[j]=0;
+			log.debug(Arrays.toString(arr));
+			while((i < j) && (arr[i] <= pivot)){
+				i++;
+			}
+			arr[j]=arr[i];
+			arr[i]=0;
+			log.debug(Arrays.toString(arr));
+		}
+		arr[i]=pivot;
+		log.debug(Arrays.toString(arr));
+	}
 }
