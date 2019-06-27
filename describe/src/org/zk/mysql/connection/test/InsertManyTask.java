@@ -24,7 +24,7 @@ public class InsertManyTask implements Runnable{
 			connection.setAutoCommit(false);
 			statement = connection.createStatement();
 			StringBuilder sb = new StringBuilder();
-			for(int i=0;i<200;i++){
+			for(int i=0;i<300;i++){
 				String s1 = UUID.randomUUID().toString();
 				sb.append("('");
 				sb.append(s1);
