@@ -6,7 +6,7 @@ import com.heap.Heap;
 import com.sort.BubbleSort;
 import com.sort.InsertSort;
 import com.sort.MergeSort;
-import com.sort.QuickSort;
+import com.sort.ClassicalQuickSort;
 import com.sort.SelectSort;
 import com.sort.Sort;
 
@@ -37,6 +37,7 @@ public class SortTest {
 //		System.err.println(Arrays.toString(arr2));
 //		Sort.check(arr2);
 		
-		new QuickSort().sort(arr5,0);
+		new ClassicalQuickSort().sort(arr5);
+		Sort.check(arr5);
 	}
 }

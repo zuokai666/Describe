@@ -18,30 +18,37 @@ import org.slf4j.LoggerFactory;
  * @date 2019-06-24 22:44:31
  *
  */
-public class QuickSort {
+public class ClassicalQuickSort {
 	
-	private static Logger log = LoggerFactory.getLogger(QuickSort.class);
+	private static Logger log = LoggerFactory.getLogger(ClassicalQuickSort.class);
 	
-	public void sort(int[] arr,int i){
-		int j=arr.length - 1;
+	public void sort(int[] arr){
+		sort(arr, 0, arr.length - 1);
+	}
+	
+	public void sort(int[] arr,int i,int j){
+		if(j <= i) return;
+		int b = i;
+		int e = j;
 		int pivot = arr[i];
-		arr[i]=0;
-		log.debug(Arrays.toString(arr));
-		while(i < j){
-			while((i < j) && (pivot <= arr[j])){
-				j--;
+		while(b < e){
+			while((b < e) && (pivot <= arr[e])){
+				e--;
 			}
-			arr[i]=arr[j];
-			arr[j]=0;
-			log.debug(Arrays.toString(arr));
-			while((i < j) && (arr[i] <= pivot)){
-				i++;
+			while((b < e) && (arr[b] <= pivot)){
+				b++;
 			}
-			arr[j]=arr[i];
-			arr[i]=0;
+			if(b < e){
+				int temp = arr[b];
+				arr[b] = arr[e];
+				arr[e] = temp;
+			}
 			log.debug(Arrays.toString(arr));
 		}
-		arr[i]=pivot;
-		log.debug(Arrays.toString(arr));
+		arr[i] = arr[b];
+		arr[b] = pivot;
+		log.info("{}-be:{}", Arrays.toString(arr), b == e);
+		sort(arr, i, b - 1);
+		sort(arr, b + 1, j);
 	}
 }

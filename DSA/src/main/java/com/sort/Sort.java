@@ -15,8 +15,12 @@ public class Sort {
 				desc = false;
 			}
 		}
-		if(asc || desc){
-			System.out.println("排序成功");
+		if(asc){
+			System.out.println("升序成功");
+			return;
+		}
+		if(desc){
+			System.out.println("降序成功");
 			return;
 		}
 		throw new RuntimeException("排序失败");
