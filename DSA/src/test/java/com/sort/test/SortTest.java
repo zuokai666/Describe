@@ -37,12 +37,7 @@ public class SortTest {
 //		System.err.println(Arrays.toString(arr2));
 //		Sort.check(arr2);
 		
-//		new ClassicalQuickSort().sort(arr5);
-//		Sort.check(arr5);
-		
-		long f = 0L;
-		while(true){
-			f++;
-		}
+		new ClassicalQuickSort().sort(arr5);
+		Sort.check(arr5);
 	}
 }
