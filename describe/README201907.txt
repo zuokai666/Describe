@@ -1,0 +1,19 @@
+当偿还借据时，保证线程安全，同步
+acct_loan 表：
+id:1
+name:左凯
+money:100
+lockFlag:0
+
+当偿还借据时，使用独占锁
+{
+	begin:
+	select lockFlag from acct_loan where id = '1' for update;设置锁等待超时时间
+	if(lockFlag == 0){
+		sys:开始偿还
+		...
+	}else{
+		sys:有操作在应用该借据，稍等
+	}
+	commit;
+}
