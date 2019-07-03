@@ -17,3 +17,20 @@ lockFlag:0
 	}
 	commit;
 }
+
+
+
+
+
+
+
+
+某些环节快速失败“fail fast原则”
+Fail fast原则是当主流程的任何一步出现问题的时候，应该快速合理地结束整个流程，而不是等到出现负面影响才处理
+ConfigurablePropertyResolver.validateRequiredProperties验证必输属性，就可以做到fail fast
+
+系统一般都有第三方依赖，比如数据库，三方接口等。系统开发的时候，需要对第三方保持怀疑，避免第三方出现问题时候的连锁反应，导致宕机。
+
+首先针对超时不可以做重路由，因为socket timeout是不能确定这笔交易是否发送到了三方，是否已经成功或者失败
+幂等性
+
