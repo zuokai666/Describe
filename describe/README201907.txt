@@ -34,3 +34,49 @@ ConfigurablePropertyResolver.validateRequiredProperties验证必输属性，就�
 首先针对超时不可以做重路由，因为socket timeout是不能确定这笔交易是否发送到了三方，是否已经成功或者失败
 幂等性
 
+
+
+
+
+
+转化系统的设计：
+首先设计一个ConversionService顶级接口，用于客户的使用
+
+然后设计转换器，具体到一个类型到一个类型，例如StringToBooleanConverter，然后这就会产生一个关于Converter转换器的类继承体系
+因为String is final和Boolean is final，所以这个是1:1
+
+有人需要从String->Byte/Integer/Long等等，难道我们也需要写这么多类吗，然后出现了ConverterFactory，转化工厂，1:N，有效的减少了类的数量
+还需要注意类是否可以继承
+尤其是在最底层实现，Spring经常喜欢写出一个Util类，来做到通用
+
+GenericConverter N:N是转化服务中最复杂的转化器
+
+现在的问题是3种类型的转换器，如何保存呢？这里使用GenericConverter为元素的ConverterRegistry
+其它的2个元素使用适配器模式，来加入到转换器注册中心，实现方式，继承GenericConverter，构造方法传入，然后实现方法
+
+
+ConverterRegistry是转换器的注册中心，提供了对转换器的增删改查管理方法
+
+然后到了具体实现GenericConversionService中，提供了转化器缓存，设计到缓存就要考虑线程安全问题
+使用ConcurrentReferenceHashMap来保证，键值对使用软引用，弱引用，所以是线程安全的。
+
+
+private final Map<ConverterCacheKey, GenericConverter> converterCache = new ConcurrentReferenceHashMap<>(64);
+ConverterCacheKey需要重写equals()和hashCode()
+equals:先判断地址，在使用instanceof判断类型，在判断里面每一个属性
+
+
+DefaultConversionService的功能是注册系统提供了一些默认的转化器，并且里面设计了基于volatile关键字的双重检查锁的单例模式
+public static void addDefaultConverters(ConverterRegistry converterRegistry) {}
+这里触动很大，考虑到了通用性，和最小依赖，注册转化器就应该只是依赖ConverterRegistry，很厉害
+
+
+
+
+
+
+
+
+
+
+
