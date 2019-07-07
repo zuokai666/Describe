@@ -73,8 +73,11 @@ public static void addDefaultConverters(ConverterRegistry converterRegistry) {}
 
 
 
-
-
+http://os.51cto.com/art/201108/285359.htm
+https://blog.csdn.net/yangbodong22011/article/details/73369426
+负载均衡：2种方式，硬件方式，软件方式
+weighted round-robin：加权轮询调度
+Nginx Smooth weighted round-robin SWRR负载均衡算法
 
 
 
