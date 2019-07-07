@@ -79,6 +79,46 @@ https://blog.csdn.net/yangbodong22011/article/details/73369426
 weighted round-robin：加权轮询调度
 Nginx Smooth weighted round-robin SWRR负载均衡算法
 
+Tomcat Acceptor线程转发消息到Poller线程使用轮询算法：哈希，取余法，O(1)
+	
+	public Poller getPoller0() {
+        int idx = Math.abs(pollerRotater.incrementAndGet()) % pollers.length;
+        return pollers[idx];
+    }
+
+Ribbon的负载均衡策略及原理
+https://blog.csdn.net/wudiyong22/article/details/80829808
+
+负载均衡有好几种实现策略，常见的有：
+	随机 (Random)
+	轮询 (RoundRobin)
+	一致性哈希 (ConsistentHash)
+	哈希 (Hash)
+	加权（Weighted）
+
+	
+	
+	
+	
+	
+	
+在地址映射过程中，若在页面中发现所要访问的页面不在内存中，则产生缺页中断。
+当发生缺页中断时，如果操作系统内存中没有空闲页面，则操作系统必须在内存选择一个页面将其移出内存，以便为即将调入的页面让出空间。
+而用来选择淘汰哪一页的规则叫做页面置换算法。
+
+LRU:Least recent used最近最少使用
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
