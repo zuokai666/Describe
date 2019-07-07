@@ -1,0 +1,20 @@
+系统CPU飙升和GC频繁如何排查？
+
+GC
+
+
+
+
+
+知识点：
+UseSerialGC：当它进行垃圾收集时，必须停下所有的工作线程，直到垃圾收集完成。Stop the world
+这就意味着：使用Serial和Serial Old收集器组合进行垃圾回收
+
+
+
+
+
+
+Young generation
+Tenured genecation：终身的; 长期保有的;
+
