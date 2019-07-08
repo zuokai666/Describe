@@ -1,0 +1,14 @@
+1.验证必要属性，满足及时失败原则
+解决：
+建立META-INF/spring.factories添加
+# Application Listeners
+org.springframework.context.ApplicationListener=\
+org.*.*.ValidatePropertiesApplicationListener
+由于在refresh()中的prepareRefresh()会校验必要属性，所以需要再次之前设置需要检查的属性
+发现在SpringApplication.run()中观察者在contextLoaded()会通知观察者们，所以监听这个事件，设置必要属性
+
+2.提高访问三方接口效率，调用6个
+解决：
+使用基于AQS的CountDownLatch对调用三方接口使用倒计时，使用多线程方式访问，提高效率，前提是各个三方接口结果无依赖
+
+
