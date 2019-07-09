@@ -1,8 +1,10 @@
-转换服务模块：用于系统中的类型转换
+转换服务模块
 org.springframework.core.convert
 环境模块
 org.springframework.core.env
-
+资源模块
+org.springframework.core.io
+核心工厂IOC模块
 BeanFactory与ApplicationContext
 
 spring.retry

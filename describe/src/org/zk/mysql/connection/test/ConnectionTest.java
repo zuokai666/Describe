@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class ConnectionTest {
 	
 	public static void main(String[] args) throws SQLException{
-		int testConnection = 1000000;
+		int testConnection = 10000000;
 		ThreadPoolExecutor executor=
 					new ThreadPoolExecutor(30, 50, 30, TimeUnit.SECONDS, new LinkedBlockingQueue<>());
 		for(int i=0;i<testConnection;i++){

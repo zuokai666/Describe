@@ -12,3 +12,5 @@ org.*.*.ValidatePropertiesApplicationListener
 使用基于AQS的CountDownLatch对调用三方接口使用倒计时，使用多线程方式访问，提高效率，前提是各个三方接口结果无依赖
 
 
+3.使用装饰器模式包装Resource，重写getFilename()以实现自己的需求
+

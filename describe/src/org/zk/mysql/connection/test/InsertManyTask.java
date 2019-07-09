@@ -1,17 +1,33 @@
 package org.zk.mysql.connection.test;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.UUID;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+
 public class InsertManyTask implements Runnable{
+	
+	static HikariDataSource ds;
+	
+	static{
+		HikariConfig config = new HikariConfig();
+		config.setJdbcUrl("jdbc:mysql://localhost:3306/test");
+		config.setUsername("root");
+		config.setPassword("d2p9bupt");
+		config.addDataSourceProperty("cachePrepStmts", "true");
+		config.addDataSourceProperty("prepStmtCacheSize", "250");
+		config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+		
+		ds = new HikariDataSource(config);
+	}
 	
 	@Override
 	public void run() {
 		try {
-			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "d2p9bupt");
+			Connection connection = ds.getConnection();
 			testConnection(connection);
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
