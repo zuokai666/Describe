@@ -1,0 +1,13 @@
+
+
+使用连接池技术
+
+
+HikariConfig implements HikariConfigMXBean
+
+
+JMX
+ThreadPoolExecutor
+AQS
+
+
