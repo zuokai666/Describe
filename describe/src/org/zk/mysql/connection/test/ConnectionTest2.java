@@ -14,23 +14,26 @@ public class ConnectionTest2 {
 	
 	public void run() {
 		try {
-			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "d2p9bupt");
-			Statement statement = null;
+			Connection connection = null;
 			try {
+				connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "d2p9bupt");
 				connection.setAutoCommit(false);
-				statement = connection.createStatement();
+				Statement statement = connection.createStatement();
 				statement.execute("select * from a where id = 1 for update");
 				connection.commit();
 				System.out.println(Thread.currentThread().getName() + " commit success ");
 			} catch (Exception e) {
-				e.printStackTrace();
-				connection.rollback();
+				System.err.println("1: " + e.getMessage());
+				if(connection != null){
+					connection.rollback();
+				}
 			} finally {
-				statement.close();
-				connection.close();
+				if(connection != null){
+					connection.close();
+				}
 			}
 		} catch (SQLException e) {
-			System.err.println(e.getMessage());
+			System.err.println("2: " + e.getMessage());
 		}
 	}
 }
