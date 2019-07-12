@@ -19,6 +19,48 @@ Ribbon：负载均衡
 com.netflix.loadbalancer.ILoadBalancer负载均衡器管理了众多的服务器com.netflix.loadbalancer.Server
 
 
+IPing:定义我们如何ping一个服务器来检查它的存活
+PingConstant:返回一个常量值（alive or dead）
+PingUrl:通过apache.httpget来和服务器通讯，返回成功或失败
+
+IPingStrategy:ping服务器列表的接口
+我们可以使用串行，并行两种方式来判断服务器存活
+
+IRule:负载均衡策略
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 新项目一律采用spring.factories架构加载对应配置类，为了加载旧jar包中的类，使用Import注解，加在Enable***注解上，用来加在配置类
 
 
