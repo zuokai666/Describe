@@ -1,0 +1,28 @@
+-showversion
+-Xms300m
+-Xmx300m
+-XX:+PrintGCDetails
+-XX:+PrintCommandLineFlags
+-XX:+UseSerialGC
+
+
+2019年7月19日
+
+-XX:InitialHeapSize=314572800 -XX:MaxHeapSize=314572800 -XX:+PrintCommandLineFlags -XX:+PrintGCDetails -XX:-UseLargePagesIndividualAllocation -XX:+UseSerialGC 
+java version "1.8.0_111"
+Java(TM) SE Runtime Environment (build 1.8.0_111-b14)
+Java HotSpot(TM) Client VM (build 25.111-b14, mixed mode)
+
+Heap
+ def new generation   total 92160K, used 15565K [0x04800000, 0x0ac00000, 0x0ac00000)
+  eden space 81920K,  19% used [0x04800000, 0x05733528, 0x09800000)
+  from space 10240K,   0% used [0x09800000, 0x09800000, 0x0a200000)
+  to   space 10240K,   0% used [0x0a200000, 0x0a200000, 0x0ac00000)
+ tenured generation   total 204800K, used 0K [0x0ac00000, 0x17400000, 0x17400000)
+   the space 204800K,   0% used [0x0ac00000, 0x0ac00000, 0x0ac00200, 0x17400000)
+ Metaspace       used 1790K, capacity 2242K, committed 2368K, reserved 4480K
+
+
+eden:survivor=8:1
+年轻代:年老代=1:2
+ 

@@ -1,0 +1,22 @@
+-showversion
+-Xms300m
+-Xmx300m
+-XX:+PrintGCDetails
+-XX:+PrintCommandLineFlags
+-XX:+UseG1GC
+
+
+2019年7月19日
+-XX:InitialHeapSize=314572800 -XX:MaxHeapSize=314572800 -XX:+PrintCommandLineFlags -XX:+PrintGCDetails -XX:+UseG1GC -XX:-UseLargePagesIndividualAllocation 
+java version "1.8.0_111"
+Java(TM) SE Runtime Environment (build 1.8.0_111-b14)
+Java HotSpot(TM) Client VM (build 25.111-b14, mixed mode)
+
+Heap
+ garbage-first heap   total 307200K, used 12288K [0x04c00000, 0x04d004b0, 0x17800000)
+  region size 1024K, 1 young (1024K), 0 survivors (0K)
+ Metaspace       used 1790K, capacity 2242K, committed 2368K, reserved 4480K
+
+ 
+ 
+区的概念

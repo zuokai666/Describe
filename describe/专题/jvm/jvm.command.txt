@@ -1,0 +1,39 @@
+client/server
+mixed mode:just in time 即时编译器，解释与编译共运行
+
+
+
+查看JVM使用的默认的垃圾收集器
+java -XX:+PrintCommandLineFlags -version
+
+
+serial young gc
+优点：单线程简单高效，没有线程交换开销
+缺点：STW
+
+serial old gc
+优点：单线程简单高效，没有线程交换开销
+缺点：STW
+
+ParNew young gc
+优点：serial的多线程版本，只有它能与CMS合作
+缺点：stw，线程开销
+
+Parallel scavenge young gc
+优点：自适应调节
+
+CMS old gc
+真正意义上的并发：不需要停止用户线程，垃圾收集线程也能工作
+缺点：它工作老年代，却标记清除
+
+G1 young and old gc
+堆分成大小相等的独立区域Region
+
+
+
+
+
+
+
+
+

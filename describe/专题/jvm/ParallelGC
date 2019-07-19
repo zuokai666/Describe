@@ -1,0 +1,29 @@
+-showversion
+-Xms300m
+-Xmx300m
+-XX:+PrintGCDetails
+-XX:+PrintCommandLineFlags
+-XX:+UseParallelGC
+
+
+2019年7月19日
+-XX:InitialHeapSize=314572800 -XX:MaxHeapSize=314572800 -XX:+PrintCommandLineFlags -XX:+PrintGCDetails -XX:-UseLargePagesIndividualAllocation -XX:+UseParallelGC 
+java version "1.8.0_111"
+Java(TM) SE Runtime Environment (build 1.8.0_111-b14)
+Java HotSpot(TM) Client VM (build 25.111-b14, mixed mode)
+
+Heap
+ PSYoungGen      total 89600K, used 15360K [0x11800000, 0x17c00000, 0x17c00000)
+  eden space 76800K, 20% used [0x11800000,0x127001f8,0x16300000)
+  from space 12800K, 0% used [0x16f80000,0x16f80000,0x17c00000)
+  to   space 12800K, 0% used [0x16300000,0x16300000,0x16f80000)
+ ParOldGen       total 204800K, used 0K [0x05000000, 0x11800000, 0x11800000)
+  object space 204800K, 0% used [0x05000000,0x05000000,0x11800000)
+ Metaspace       used 1790K, capacity 2242K, committed 2368K, reserved 4480K
+
+
+eden:survivor=6:1
+年轻代:年老代=1:2
+
+
+

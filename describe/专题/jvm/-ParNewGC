@@ -1,0 +1,28 @@
+-showversion
+-Xms300m
+-Xmx300m
+-XX:+PrintGCDetails
+-XX:+PrintCommandLineFlags
+-XX:+UseParNewGC
+
+
+2019年7月19日
+-XX:InitialHeapSize=314572800 -XX:MaxHeapSize=314572800 -XX:+PrintCommandLineFlags -XX:+PrintGCDetails -XX:-UseLargePagesIndividualAllocation -XX:+UseParNewGC 
+java version "1.8.0_111"
+Java(TM) SE Runtime Environment (build 1.8.0_111-b14)
+Java HotSpot(TM) Client VM (build 25.111-b14, mixed mode)
+
+Heap
+ par new generation   total 92160K, used 15565K [0x05600000, 0x0ba00000, 0x0ba00000)
+  eden space 81920K,  19% used [0x05600000, 0x06533528, 0x0a600000)
+  from space 10240K,   0% used [0x0a600000, 0x0a600000, 0x0b000000)
+  to   space 10240K,   0% used [0x0b000000, 0x0b000000, 0x0ba00000)
+ tenured generation   total 204800K, used 0K [0x0ba00000, 0x18200000, 0x18200000)
+   the space 204800K,   0% used [0x0ba00000, 0x0ba00000, 0x0ba00200, 0x18200000)
+ Metaspace       used 1790K, capacity 2242K, committed 2368K, reserved 4480K
+Java HotSpot(TM) Client VM warning: Using the ParNew young collector with the Serial old collector is deprecated and will likely be removed in a future release
+
+
+eden:survivor=8:1
+年轻代:年老代=1:2
+
