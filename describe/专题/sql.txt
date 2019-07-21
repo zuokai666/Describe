@@ -1,0 +1,32 @@
+select * from student,course;
+如果A表示某学校学生的集合，B表示该学校所有课程的集合，则A与B的笛卡尔积表示所有可能的选课情况
+
+例子：
+student学生表
+course课程表
+studentscore成绩表
+
+
+select * from student,studentscore,course;//笛卡尔积
+
+1.查找语文成绩是100的学生
+
+select * from student,studentscore,course 
+where 
+student.id=studentscore.s_id 
+and course.id=studentscore.c_id 
+and course.name='语文'
+and studentscore.score='100';
+
+
+select * from student
+where 
+id in(select s_id from studentscore where c_id=(select id from course where course.name='语文') and score='100');
+
+
+
+
+
+
+
+
