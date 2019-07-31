@@ -111,12 +111,16 @@ LRU:Least recent used最近最少使用
 
 
 
+2019年7月31日16:52:10
 
+BigDecimal
+不建议采用传入double构造，会有精度问题，带来不可预知性，通常建议优先使用String构造方法 
+new BigDecimal(Double.toString(val));
 
-
-
-
-
+   public BigDecimal add(BigDecimal value); //加法
+　　public BigDecimal subtract(BigDecimal value); //减法 
+　　public BigDecimal multiply(BigDecimal value); //乘法
+　　public BigDecimal divide(BigDecimal value); //除法
 
 
 
