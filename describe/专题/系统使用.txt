@@ -14,4 +14,8 @@ org.*.*.ValidatePropertiesApplicationListener
 
 3.使用装饰器模式包装Resource，重写getFilename()以实现自己的需求
 
-3.批量导出数据生成文件，内存泄漏，原因Hibernate一级缓存问题
+4.批量导出数据生成文件，内存泄漏，原因Hibernate一级缓存问题
+
+5.使用DCL双重检查锁方法检查借据问题（主动还款，批量扣款）
+
+
