@@ -14,8 +14,16 @@ org.*.*.ValidatePropertiesApplicationListener
 
 3.使用装饰器模式包装Resource，重写getFilename()以实现自己的需求
 
+
 4.批量导出数据生成文件，内存泄漏，原因Hibernate一级缓存问题
 
+
 5.使用DCL双重检查锁方法检查借据问题（主动还款，批量扣款）
+避免死锁，不满足循环等待条件，顺序等待
+
+
+6.batch框架插入job，job_execution，step_exection主键冲突问题
+单体应用锁，与分布式锁没有满足，只有在获取nextKey时，加入了synchronized，可以满足本身应用的线程安全，如果同时有2个服务器连接同一个数据库，则会出现主键冲突。
+
 
 
