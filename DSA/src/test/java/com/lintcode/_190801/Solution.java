@@ -15,17 +15,18 @@ public class Solution {
     		return 0;
     	}
     	Set<Integer> set = new HashSet<>();
-    	int x = 1;//直接从第二个元素开始
-    	set.add(nums[0]);
-    	for(int i=1;i<nums.length;i++){
+    	int x = 0;
+    	for(int i=0;i<nums.length;i++){
     		if(set.contains(nums[i])){
     			
     		}else {
-    			int temp = nums[i];
-    			nums[i] = nums[x];
-    			nums[x] = temp;
-    			x++;
+    			if(x != i){
+    				int temp = nums[i];
+        			nums[i] = nums[x];
+        			nums[x] = temp;
+    			}
     			set.add(nums[x]);
+    			x++;
 			}
     	}
 		return x;

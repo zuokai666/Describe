@@ -17,7 +17,7 @@ public class Solution {
 			}
 		});
 		for(int i=0;i<intervals.size()-1;i++){
-			if(intervals.get(i).end > intervals.get(i+1).end){
+			if(intervals.get(i).end > intervals.get(i+1).start){
 				return false;
 			}
 		}
