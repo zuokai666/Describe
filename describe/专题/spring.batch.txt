@@ -1,0 +1,6 @@
+spring.batch作为批处理框架，quartz作为调度框架。
+
+JobLauncher驱动Job执行，Job有好几个Step组成。一个step由ItemReader，ItemProcessor，ItemWriter组成。
+
+JobRepository用来连接数据库，存储运行实时状态等数据
+
