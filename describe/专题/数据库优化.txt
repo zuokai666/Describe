@@ -50,7 +50,9 @@ InnoDB关键特性：插入缓冲，两次写，自适应哈希索引
 
 
 
-
+2019年10月11日10:44:05
+delete from XXX;和事务有关，会记录日志，删除慢，可以加where条件过滤
+truncate table XXX;DDL语言，不能回滚，删除速度快，不可以加where条件过滤
 
 
 

@@ -4,3 +4,9 @@ JobLauncher驱动Job执行，Job有好几个Step组成。一个step由ItemReader
 
 JobRepository用来连接数据库，存储运行实时状态等数据
 
+
+调度框架：定时执行
+1.Timer
+2.ScheduledThreadPoolExecutor
+3.Linux的crontab
+2.Quartz调度框架
