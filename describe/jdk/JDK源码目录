@@ -1,0 +1,6 @@
+java.lang:基本类型，字符串及构建，异常体系
+java.util:集合框架
+java.util.concurrent:线程,锁
+java.io/java.nio
+java.math
+java.net:网络,Socket
