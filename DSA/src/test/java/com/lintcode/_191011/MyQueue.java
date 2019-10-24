@@ -2,16 +2,12 @@ package com.lintcode._191011;
 
 import java.util.Stack;
 
-@SuppressWarnings("unused")
 public class MyQueue {
 	
-	
-	private Stack<Integer> stack1;
-	private Stack<Integer> stack2;
+	private Stack<Integer> stack;
 	
     public MyQueue() {
-    	this.stack1 = new Stack<>();
-    	this.stack2 = new Stack<>();
+    	this.stack = new Stack<>();
     }
     
     /*
@@ -19,22 +15,36 @@ public class MyQueue {
      * @return: nothing
      */
     public void push(int element) {
-        // write your code here
+    	stack.push(element);
     }
-
+    
     /*
      * @return: An integer
      */
     public int pop() {
-		return 0;
-        // write your code here
+    	Stack<Integer> temp = new Stack<>();
+    	while(!stack.isEmpty()){
+    		temp.push(stack.pop());
+    	}
+    	int result = temp.pop();
+    	while(!temp.isEmpty()){
+    		stack.push(temp.pop());
+    	}
+		return result;
     }
 
     /*
      * @return: An integer
      */
     public int top() {
-		return 0;
-        // write your code here
+    	Stack<Integer> temp = new Stack<>();
+    	while(!stack.isEmpty()){
+    		temp.push(stack.pop());
+    	}
+    	int result = temp.peek();
+    	while(!temp.isEmpty()){
+    		stack.push(temp.pop());
+    	}
+		return result;
     }
 }

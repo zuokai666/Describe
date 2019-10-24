@@ -11,11 +11,7 @@ public class Test {
 	public static void main(String[] args) {
 		ArrayList<Integer> list = new ArrayList<>();
 		DataOperator.addInt(list);
-		TimeTemplate.count(new Runnable() {
-			public void run() {
-				forList(list);
-			}
-		});
+		TimeTemplate.count(() -> forList(list));
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {

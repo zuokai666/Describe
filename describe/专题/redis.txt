@@ -1,0 +1,14 @@
+熟悉了jedis的使用方式，了解了redis交互的协议
+输入：
+	*3
+	$3
+	SET
+	$3
+	key
+	$5
+	value
+输出：
+	+OK
+
+	
+setnx：set not exists如果不存在设置值

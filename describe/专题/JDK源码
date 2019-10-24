@@ -4,3 +4,11 @@ java.util.concurrent:线程,锁
 java.io/java.nio
 java.math
 java.net:网络,Socket
+
+jdk动态代理，静态代理，代理模式，cglib动态代理
+
+
+
+
+
+
