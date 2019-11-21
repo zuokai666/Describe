@@ -1,0 +1,26 @@
+IOC容器：控制反转，将新建对象的操作转移到容器内，降低了对象与对象之间的耦合，增加了对象与容器的耦合，尤其是增加了Aware感知接口后。
+
+BeanDefinition存储着Bean的各种信息
+
+Bean与BeanFactory
+
+DefaultListableBeanFactory是spring默认的bean工厂实现，Bean管理器
+
+数据结构：哈希表，实现ConcurrentHashMap
+
+单一职责原则：单例对象没有放在DefaultListableBeanFactory中，而是放在DefaultSingletonBeanRegistry中
+		  ApplicationContext是一个更高级的容器，控制BeanFactory。
+开闭原则：
+	   BeanPostProcessor，如果我们想要修改对象，注册后置处理器即可，不需要改变代码。
+	   SpringFactoriesLoader，加载文件中的对象
+	   Listener观察者模式
+
+
+
+spring boot run步骤：
+1.新建计时器，开始计时：很喜欢这里，面向对象编程
+2.使用SpringFactoriesLoader加载配置文件中的监听器，便于后面执行的观察
+3.创建环境变量，打印横幅，创建应用上下文以及refresh
+4.停止计时（中间每个过程会调用观察者进行处理）
+5.callRunners：使用场景：RabbitStartupRunner，当所有组件启动后再执行
+

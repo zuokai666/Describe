@@ -1,0 +1,51 @@
+public class Main {
+	
+	static ReentrantLock lock = new ReentrantLock();
+	
+	public static void main(String[] args) {
+		Thread thread1 = new Thread(() -> a());
+		Thread thread2 = new Thread(() -> a());
+		thread1.start();
+		thread2.start();
+	}
+	
+	public static void a() {
+		lock.lock();
+		try {
+			//do something.
+		} finally {
+			lock.unlock();
+		}
+	}
+}
+分析AbstractQueuedSynchronizer中的等待队列入队enqueue出队dequeue情况。
+第一次获取锁：
+compareAndSetState(0, 1);如果成功，设置状态0到1
+setExclusiveOwnerThread(Thread.currentThread());设置当前线程占有排他锁
+
+第一次释放锁：
+setExclusiveOwnerThread(null);
+setState(0);
+unparkSuccessor(head);
+
+
+
+第二次获取锁：
+1.tryAcquire(1);失败，因为上上一个线程已经占有锁，并且将状态设为1
+2.acquireQueued(addWaiter(Node.EXCLUSIVE), 1)
+2.1.addWaiter(Node.EXCLUSIVE)
+	传入（当前线程，排他状态），构建[新节点]
+	enqueue(node):如果[尾]为空，则设置一个空节点当[头]，并让[尾]=[头];
+	使用原子操作设置[尾]与[新节点]的双向关联。（就算失败，外部有一个无限循环，所以一定可以成功）
+2.2.acquireQueued([新节点], 1)
+	LockSupport.park(this);
+	setHead(node);p.next = null;将[头]出队
+
+
+疑问：
+1."CLH" (Craig, Landin, and Hagersten)
+
+
+
+
+
