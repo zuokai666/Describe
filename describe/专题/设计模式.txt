@@ -7,3 +7,4 @@ Mybatis的ConnectionLogger，Mapper接口，RPC
 单例模式
 观察者模式
 
+迭代器模式：常用语遍历集合元素

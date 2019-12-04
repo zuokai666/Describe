@@ -1,0 +1,23 @@
+com.zaxxer.hikari.pool.HikariPool.PoolEntryCreator.shouldCreateAnotherConnection()
+
+private boolean shouldCreateAnotherConnection() {
+	return getTotalConnections() < config.getMaximumPoolSize() &&
+        (connectionBag.getWaitingThreadCount() > 0 || getIdleConnections() < config.getMinimumIdle());
+}
+
+
+
+总连接数 < 配置最大连接数
+等待线程数 > 0 || 空闲连接 < 配置最小空闲数
+
+
+
+
+evict，retire：驱逐，赶出
+
+
+HouseKeeper任务：保持最小空闲连接，使用ScheduledExecutorService的固定延迟方法调用
+默认核心数为1，延迟30s，采用静默丢弃策略执行
+
+
+
