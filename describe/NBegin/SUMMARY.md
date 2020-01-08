@@ -15,3 +15,6 @@ tcp/ip协议簇
 # Open Source Framework
 分布式主键生成策略，数据库连接池，批量处理框架
 # Framework Using And Source Code
+
+# 中间件
+Redis
