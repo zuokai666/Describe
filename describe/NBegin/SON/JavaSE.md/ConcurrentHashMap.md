@@ -3,7 +3,7 @@
 
 	public interface Map<K,V> {
 		V put(K key, V value);
-	    V get(Object key);//不加锁，很疑惑。
+	    V get(Object key);//不加锁
 	}
 
 第一个，put函数：
@@ -44,5 +44,11 @@
 3.接下来描述多线程竞争插入同一位置的元素，使用synchronized(头元素)来锁住单链表或者说红黑树，接下来就不用分析了，因为同步块中只有一个线程访问了，不涉及并发了，辣个幸运儿线程抢到了锁，进行自己的put就好了。
 
 综上所述，当多线程插入不同的位置的元素时，它们之间的竞争很少了，因为synchronized锁的粒度是后面的单链表/红黑树，通过减小锁的粒度来提高并发性，这一点是相对于Hashtable来说，将整个插入统一锁住，ConcurrentHashMap的做法实在是高。
+
+第二个，get函数不加锁原因：
+
+1.首先是table引用会涉及到线程间竞争问题。由于扩容会重新创建一个数组，所以原数组不会影响，而且get方法中首先会将全局引用赋值给tab局部引用，这一点也是可以保证线程安全的，另外table是volatile类型，保证线程可见性。
+
+2.使用cas操作来获取头元素，线程安全，接下来是遍历链表/红黑树了，首先，Node中的value和next引用是volatile，保证线程可见性，然后分析put，remove对链表的遍历的影响：put时，直接将元素放入队尾，线程安全，remove时，设置pred.next=e.next，也不会造成线程安全问题。
 
 PS:其实从ConcurrentHashMap使用synchronized关键字可以看出，并发包中不使用ReentrantLock，也能看出官方对于synchronized和ReentrantLock的态度，如果synchronized可以满足当前需求，就尽量选择synchronized。
